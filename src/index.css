@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colors are stored as RGB channels so Tailwind's opacity modifiers work (e.g. text-ink/40). */
+:root {
+  --color-page: 232 232 230; /* #E8E8E6 */
+  --color-surface: 244 244 242; /* #F4F4F2 */
+  --color-inset: 236 236 233; /* #ECECE9 — screenshot wells, pills */
+  --color-ink: 26 26 26; /* #1A1A1A */
+  --color-muted: 119 119 116; /* #777774 */
+  color-scheme: light;
+}
+
+.dark {
+  --color-page: 20 20 19; /* #141413 */
+  --color-surface: 30 30 28; /* #1E1E1C */
+  --color-inset: 38 38 35; /* #262623 */
+  --color-ink: 240 240 238; /* #F0F0EE */
+  --color-muted: 138 138 134; /* #8A8A86 */
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: rgb(var(--color-page));
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* No body background: the page color lives on <html> so the geometry canvas can sit between them. */
+  body {
+    @apply font-sans text-ink antialiased;
+    font-size: 1rem;
+  }
+
+  ::selection {
+    @apply bg-ink text-surface;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-ink));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .heading-display {
+    @apply text-display font-normal text-ink;
+  }
+
+  .body-copy {
+    @apply max-w-prose text-base leading-relaxed text-muted sm:text-[17px];
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-muted;
+  }
+
+  /* Fade the logo strip out at both edges. */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .field {
+    @apply w-full rounded-2xl bg-inset px-4 py-3.5 text-[15px] text-ink placeholder:text-muted/70 transition-shadow focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-ink/30;
+  }
+
+  /* Entrance animation: fade up ~12px. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 700ms ease-out,
+      transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /*
+   * Staggered children: once the parent section is visible, each child with
+   * `.stagger-item` fades up in turn. Delay comes from --i (set via lib/stagger.ts).
+   */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 600ms ease-out,
+      transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 70ms + 120ms);
+  }
+
+  .is-visible .stagger-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Underline that draws in from the left on hover, over a faint resting line. */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor),
+      linear-gradient(rgb(var(--color-ink) / 0.15), rgb(var(--color-ink) / 0.15));
+    background-size: 0% 1px, 100% 1px;
+    background-position: 0 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    padding-bottom: 0.08em;
+  }
+
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px, 100% 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.is-visible,
+    .stagger-item,
+    .is-visible .stagger-item {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@keyframes gallery-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
