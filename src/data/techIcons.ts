@@ -24,7 +24,21 @@ import {
   SiReact,
   SiTailwindcss,
   SiTypescript,
+  SiGithubactions,
+  SiSocketdotio,
+  SiStripe,
+  SiVercel,
+  SiFirebase,
+  SiGodaddy,
+  SiHostinger,
+  SiRender,
+  SiSupabase,
+  SiSvelte,
+  SiTauri,
+  SiLaravel,
+  SiVuedotjs,
 } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 import { TbBrandOpenai } from 'react-icons/tb';
 import { VscVscode } from 'react-icons/vsc';
 import type { TechIcon } from '../types';
@@ -46,12 +60,16 @@ export const techIcons: Record<string, TechIcon> = {
   CSS3: { icon: SiCss, color: '#1572B6' },
   Bootstrap: { icon: SiBootstrap, color: '#7952B3' },
   Leaflet: { icon: SiLeaflet, color: '#199900' },
+  Svelte: { icon: SiSvelte, color: '#FF3E00' },
+  Vue: { icon: SiVuedotjs, color: '#4FC08D' },
+  Tauri: { icon: SiTauri, color: '#FFC131' },
 
   // Backend
   'Node.js': { icon: SiNodedotjs, color: '#5FA04E' },
   'Express.js': { icon: SiExpress },
   Express: { icon: SiExpress },
   Django: { icon: SiDjango, color: '#44B78B' },
+  Laravel: { icon: SiLaravel, color: '#FF2D20' },
   'RESTful APIs': { icon: FiServer },
   'Auth & Authorization': { icon: FiLock },
   JWT: { icon: SiJsonwebtokens },
@@ -62,7 +80,19 @@ export const techIcons: Record<string, TechIcon> = {
   PostGIS: { icon: SiPostgresql, color: '#4169E1' },
   MySQL: { icon: SiMysql, color: '#4479A1' },
   MongoDB: { icon: SiMongodb, color: '#47A248' },
+  Stripe: { icon: SiStripe, color: '#635BFF' },
+  'Socket.IO': { icon: SiSocketdotio },
+  'GitHub Actions': { icon: SiGithubactions, color: '#2088FF' },
   'Data Modeling': { icon: FiDatabase },
+
+  // Deployment
+  Vercel: { icon: SiVercel },
+  Render: { icon: SiRender },
+  Supabase: { icon: SiSupabase, color: '#3FCF8E' },
+  Firebase: { icon: SiFirebase, color: '#FFCA28' },
+  GoDaddy: { icon: SiGodaddy, color: '#1BDBDB' },
+  Hostinger: { icon: SiHostinger, color: '#673DE6' },
+  AWS: { icon: FaAws, color: '#FF9900' },
 
   // Languages
   'JavaScript (ES6+)': { icon: SiJavascript, color: '#F0C419' },

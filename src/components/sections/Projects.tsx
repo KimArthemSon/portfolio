@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import type { Project } from '../../types';
+import { getTechIcon } from '../../data/techIcons';
 import { SCREENSHOT_WIDTHS, avifSrcSet, webpSrcSet } from '../../lib/images';
 import { linkHandler, projectPath } from '../../lib/router';
 import { stagger } from '../../lib/stagger';
@@ -94,11 +95,25 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="mt-2 line-clamp-2 text-[15px] leading-snug text-muted">{project.subtitle}</p>
 
         <ul aria-label={`${project.name} tech stack`} className="mt-5 flex flex-wrap gap-1.5">
-          {project.tech.slice(0, MAX_PILLS).map((tech) => (
-            <li key={tech} className="rounded-full bg-inset px-3 py-1.5 text-[12px] leading-none text-ink/75">
-              {tech}
-            </li>
-          ))}
+          {project.tech.slice(0, MAX_PILLS).map((tech) => {
+            const icon = getTechIcon(tech);
+            const Icon = icon?.icon;
+            return (
+              <li
+                key={tech}
+                className="inline-flex items-center gap-1.5 rounded-full bg-inset px-3 py-1.5 text-[12px] leading-none text-ink/75"
+              >
+                {Icon && (
+                  <Icon
+                    aria-hidden="true"
+                    className="h-3 w-3 shrink-0"
+                    style={icon.color ? { color: icon.color } : undefined}
+                  />
+                )}
+                {tech}
+              </li>
+            );
+          })}
           {extra > 0 && (
             <li className="rounded-full px-2 py-1.5 text-[12px] leading-none text-muted">+{extra}</li>
           )}

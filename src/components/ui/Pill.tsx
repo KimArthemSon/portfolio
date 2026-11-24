@@ -1,11 +1,13 @@
 import { getTechIcon } from '../../data/techIcons';
 
 /** `inset` sits on a card surface; `surface` sits on an already-inset tile. */
-type PillTone = 'inset' | 'surface';
+type PillTone = 'inset' | 'surface' | 'familiar';
 
 const tones: Record<PillTone, string> = {
   inset: 'bg-inset',
   surface: 'bg-surface',
+  /** Lighter, dashed outline: tech you're familiar with but not strong in yet. */
+  familiar: 'border border-dashed border-ink/30 bg-transparent',
 };
 
 interface PillProps {

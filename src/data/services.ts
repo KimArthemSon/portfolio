@@ -15,12 +15,18 @@ export const servicesContent: ServicesContent = {
         highlight: true,
       },
       {
-        title: 'Junior Developer',
-        detail: 'Entry-level roles after I graduate in 2027, on a team that ships.',
-      },
-      {
         title: 'Full-Stack Developer',
         detail: 'Web and mobile, front end to database. Happy to lean frontend or backend too.',
+        tag: 'Interested',
+      },
+      {
+        title: 'QA / Software Testing',
+        detail: 'Also interested in quality assurance: testing features, finding bugs, and helping a team ship with confidence.',
+      },
+      {
+        title: 'AI Engineering',
+        detail: 'Currently learning to build apps on top of LLMs and AI APIs, and keen to grow into AI engineering work.',
+        tag: 'Learning',
       },
     ],
   },

@@ -31,19 +31,37 @@ export const stacks: Stack[] = [
 export const skills: Skill[] = [
   {
     category: 'Frontend',
-    items: ['React.js', 'React Native', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'Bootstrap', 'Leaflet'],
+    items: [
+      'React.js',
+      'React Native',
+      'Svelte',
+      'Tauri',
+      'TypeScript',
+      'Tailwind CSS',
+      'HTML5',
+      'CSS3',
+      'Bootstrap',
+      'Leaflet',
+    ],
+    familiar: ['Vue'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express.js', 'Django', 'RESTful APIs', 'Auth & Authorization'],
+    items: ['Node.js', 'Express.js', 'Django'],
+    familiar: ['Laravel'],
   },
-  { category: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Data Modeling'] },
+  { category: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
+  {
+    category: 'Deployment',
+    items: ['Vercel', 'Render', 'Supabase', 'Firebase', 'GoDaddy', 'Hostinger'],
+  },
   {
     category: 'Languages',
     items: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Java', 'C++', 'PHP'],
   },
-  { category: 'Tools', items: ['Git', 'GitHub', 'VS Code', 'GIS & Geospatial Analysis'] },
+  { category: 'Tools', items: ['Git', 'GitHub', 'VS Code'] },
   { category: 'AI Tools', items: ['Claude', 'ChatGPT', 'Qwen'] },
+  { category: 'Currently Learning', items: ['AWS'] },
 ];
 
 /** The scrolling logo strip under the hero. */

@@ -25,7 +25,6 @@ export function Hero({ profile, projectsId }: HeroProps) {
       {/* Header row */}
       <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
         <div className="flex items-center gap-3.5">
-          <Avatar src={profile.avatar} className="h-11 w-11 lg:hidden" />
           <div className="leading-tight">
             <p className="text-[15px] font-medium text-ink">{profile.name}</p>
             <p className="text-[13px] text-muted">{profile.role}</p>
@@ -41,7 +40,7 @@ export function Hero({ profile, projectsId }: HeroProps) {
         )}
       </div>
 
-      <div className="mt-16 grid items-center sm:mt-20 lg:mt-16 gap-12 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_300px] xl:gap-16">
+      <div className="mt-10 grid items-center gap-10 sm:mt-14 sm:gap-12 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_300px] xl:gap-16">
         <div>
           <h1 className="heading-display">
             <span className="stagger-item block" style={stagger(0)}>
@@ -73,7 +72,7 @@ export function Hero({ profile, projectsId }: HeroProps) {
                 strokeWidth={1.75}
               />
             </Button>
-            <Button href={profile.resumeUrl} variant="outline" download>
+            <Button href={profile.resumeUrl} variant="outline" download="Kim_Arthem_Son_Resume.pdf">
               Download Resume
               <FiDownload
                 aria-hidden="true"
@@ -83,32 +82,35 @@ export function Hero({ profile, projectsId }: HeroProps) {
             </Button>
           </div>
 
-          <ul className="stagger-item mt-10 flex items-center gap-1" style={stagger(5)} aria-label="Profiles">
-            {profile.socials.map(({ label, href, icon: Icon }) => {
-              const external = href.startsWith('http');
-              return (
-                <li key={label}>
-                  <a
-                    href={href}
-                    aria-label={label}
-                    {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                    className="group -ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-muted transition-[color,background-color,transform] duration-200 hover:-translate-y-1 hover:bg-ink/5 hover:text-ink focus-visible:rounded-full motion-reduce:transform-none"
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="h-[18px] w-[18px] transition-transform duration-300 group-hover:-rotate-[8deg] group-hover:scale-110"
-                      strokeWidth={1.5}
-                    />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="stagger-item mt-10" style={stagger(5)}>
+            <p className="eyebrow">Find me on</p>
+            <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label="Profiles">
+              {profile.socials.map(({ label, href, icon: Icon }) => {
+                const external = href.startsWith('http');
+                return (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                      className="group inline-flex h-11 items-center gap-2.5 rounded-full bg-inset pl-3.5 pr-4 text-sm font-medium text-ink ring-1 ring-inset ring-ink/[0.06] transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-surface hover:shadow-[0_10px_24px_-12px_rgb(0_0_0/0.45)] focus-visible:rounded-full motion-reduce:transform-none"
+                    >
+                      <Icon
+                        aria-hidden="true"
+                        className="h-[18px] w-[18px] transition-transform duration-300 group-hover:-rotate-[8deg] group-hover:scale-110"
+                        strokeWidth={1.75}
+                      />
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
 
-        {/* Desktop portrait: gently floats, tilts toward you on hover */}
+        {/* Portrait: above the heading on phones and tablets, beside it on desktop. Gently floats, tilts on hover. */}
         {profile.avatar && (
-          <div className="stagger-item hidden lg:block" style={stagger(2)}>
+          <div className="stagger-item order-first w-44 sm:w-52 lg:order-none lg:w-auto" style={stagger(0)}>
             <div className="animate-float motion-reduce:animate-none">
               <div className="group relative transition-transform duration-500 ease-out hover:-rotate-2 hover:scale-[1.03] motion-reduce:transform-none">
                 {/* Offset outline frame behind the photo */}
@@ -125,7 +127,7 @@ export function Hero({ profile, projectsId }: HeroProps) {
                     width={400}
                     height={400}
                     decoding="async"
-                    // Above the fold on desktop: fetch it first.
+                    // Above the fold: fetch it first.
                     {...HIGH_PRIORITY}
                     className="relative aspect-[4/5] w-full rounded-[24px] bg-inset object-cover object-top"
                   />
@@ -140,29 +142,5 @@ export function Hero({ profile, projectsId }: HeroProps) {
         )}
       </div>
     </Section>
-  );
-}
-
-interface AvatarProps {
-  src?: string;
-  className?: string;
-}
-
-function Avatar({ src, className = '' }: AvatarProps) {
-  if (!src) return <span aria-hidden="true" className={`shrink-0 rounded-full bg-inset ${className}`} />;
-  return (
-    <picture className="contents">
-      <source type="image/webp" srcSet={webp(src, 96)} />
-      <img
-        src={src}
-        alt=""
-        width={44}
-        height={44}
-        // Hidden on desktop; lazy means it's skipped there instead of downloaded.
-        loading="lazy"
-        decoding="async"
-        className={`shrink-0 rounded-full bg-inset object-cover ${className}`}
-      />
-    </picture>
   );
 }

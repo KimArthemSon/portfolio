@@ -32,14 +32,29 @@ export function Skills({ heading, stacksLabel, stacks, toolboxLabel, skills }: S
       <div className="mt-16 lg:mt-20">
         <p className="eyebrow">{toolboxLabel}</p>
         <div className="mt-6 divide-y divide-ink/10">
-          {skills.map(({ category, items }, i) => (
+          {skills.map(({ category, items, familiar }, i) => (
             <div
               key={category}
               style={stagger(i + stacks.length)}
               className="stagger-item grid gap-4 py-6 first:pt-0 last:pb-0 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[200px_minmax(0,1fr)]"
             >
               <h3 className="eyebrow sm:pt-2.5">{category}</h3>
-              <PillList items={items} label={`${category} skills`} />
+              <div className="flex flex-wrap items-center gap-2">
+                <PillList items={items} label={`${category} skills`} className="contents" />
+                {familiar && familiar.length > 0 && (
+                  <>
+                    <span className="ml-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted/80">
+                      Familiar
+                    </span>
+                    <PillList
+                      items={familiar}
+                      label={`${category} skills I'm familiar with`}
+                      tone="familiar"
+                      className="contents"
+                    />
+                  </>
+                )}
+              </div>
             </div>
           ))}
         </div>

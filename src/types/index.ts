@@ -125,6 +125,8 @@ export interface Skill {
   category: string;
   /** Names are matched against src/data/techIcons.ts to get an icon. */
   items: string[];
+  /** Tech you've used but aren't strong in yet — shown after `items` in a lighter "familiar" style. */
+  familiar?: string[];
 }
 
 export interface Stack {
