@@ -1,5 +1,6 @@
 import { useRef, useState, type MouseEvent } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { webp } from '../../lib/images';
 import { scrollToSection } from '../../lib/scroll';
 import type { NavItem } from '../../types';
 import { StatusDot } from '../ui/StatusDot';
@@ -11,9 +12,11 @@ interface NavProps {
   items: NavItem[];
   name: string;
   status: string;
+  /** Photo shown beside the name in the mobile bar; an outlined circle when omitted. */
+  avatar?: string;
 }
 
-export function Nav({ items, name, status }: NavProps) {
+export function Nav({ items, name, status, avatar }: NavProps) {
   const activeId = useActiveSection(items.map((item) => item.id));
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -44,10 +47,21 @@ export function Nav({ items, name, status }: NavProps) {
             onClick={goHome}
             className="flex min-w-0 items-center gap-2.5 focus-visible:rounded-full"
           >
-            <span
-              aria-hidden="true"
-              className="h-7 w-7 shrink-0 rounded-full border-[2.5px] border-ink"
-            />
+            {avatar ? (
+              <picture className="contents">
+                <source type="image/webp" srcSet={webp(avatar, 96)} />
+                <img
+                  src={avatar}
+                  alt=""
+                  width={32}
+                  height={32}
+                  decoding="async"
+                  className="h-8 w-8 shrink-0 rounded-full bg-inset object-cover object-top ring-1 ring-ink/10"
+                />
+              </picture>
+            ) : (
+              <span aria-hidden="true" className="h-7 w-7 shrink-0 rounded-full border-[2.5px] border-ink" />
+            )}
             <span className="truncate text-sm font-medium text-ink">{name}</span>
             <span className="ml-1 hidden items-center gap-1.5 text-xs text-muted min-[360px]:flex">
               <StatusDot pulse />

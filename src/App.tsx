@@ -56,7 +56,12 @@ export default function App() {
 function Home() {
   return (
     <>
-      <Nav items={navItems} name={profile.shortName} status={profile.availability.short} />
+      <Nav
+        items={navItems}
+        name={profile.shortName}
+        status={profile.availability.short}
+        avatar={profile.avatar}
+      />
 
       <main id="main" className="flex flex-col gap-3 sm:gap-4">
         <Hero profile={profile} projectsId="projects" />
