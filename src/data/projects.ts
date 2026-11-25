@@ -7,7 +7,7 @@ export const projects: Project[] = [
     id: 'plantscope',
     name: 'PlantScope',
     subtitle: 'GIS-Based Site Suitability Assessment & Reforestation Monitoring System',
-    meta: ['Academic Capstone', 'Team of 3', 'November 2025 – Present'],
+    meta: ['Academic Capstone', 'Team of 3', 'November 2025 – November 2026'],
     summary:
       "Built for Ormoc City's reforestation program, used by field officers and city administrators.",
     screenshots: [
