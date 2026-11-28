@@ -78,7 +78,6 @@ export const techIcons: Record<string, TechIcon> = {
 
   // Databases
   PostgreSQL: { icon: SiPostgresql, color: '#4169E1' },
-  PostGIS: { icon: SiPostgresql, color: '#4169E1' },
   MySQL: { icon: SiMysql, color: '#4479A1' },
   MongoDB: { icon: SiMongodb, color: '#47A248' },
   Stripe: { icon: SiStripe, color: '#635BFF' },

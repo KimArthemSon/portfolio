@@ -6,10 +6,11 @@ export const projects: Project[] = [
   {
     id: 'plantscope',
     name: 'PlantScope',
-    subtitle: 'GIS-Based Site Suitability Assessment & Reforestation Monitoring System',
+    subtitle:
+      'GIS-Based Site Suitability Assessment & Reforestation Monitoring System with Geospatial Analytics for Ormoc City',
     meta: ['Academic Capstone', 'Team of 3', 'November 2025 – November 2026'],
     summary:
-      "Built for Ormoc City's reforestation program, used by field officers and city administrators.",
+      "Web platform and offline mobile app for Ormoc City's Environment and Natural Resources Office (ENRO), taking a reforestation site from satellite screening to field verification, planting, and survival monitoring.",
     screenshots: [
       {
         src: '/projects/plantscope-landing.jpg',
@@ -22,11 +23,11 @@ export const projects: Project[] = [
         alt: 'PlantScope map view: satellite map of Ormoc City with reforestation site markers and analysis tools',
       },
     ],
-    tech: ['React', 'TypeScript', 'React Native', 'Django', 'PostgreSQL', 'Leaflet', 'PostGIS'],
+    tech: ['React', 'TypeScript', 'React Native', 'Django', 'PostgreSQL', 'Leaflet'],
     highlights: [
-      'Developed web and mobile clients in React TypeScript and React Native with Leaflet mapping, sharing a single assessment workflow across both platforms.',
-      'Built Django RESTful APIs and a PostgreSQL database with geospatial extensions, supporting assessment of 15+ reforestation sites and monitoring of 5 tree grower organizations.',
-      'Implemented geospatial analysis algorithms for site suitability scoring and resource optimization.',
+      "Developed the React 19 web platform, offline-capable React Native field app, and Django REST APIs on PostgreSQL, replacing ENRO's spreadsheets, paper forms, and separate GIS tools with one system of record.",
+      'Implemented remote screening — NDVI on Sentinel-2 (0.2–0.4 threshold), PHIVOLCS and MGB hazard layers, and NASA FIRMS hotspots — as multi-criteria (MCDA) inputs the GIS Specialist weighs, shortlisting sites before field visits.',
+      'Delivered the ground-verification and monitoring chain, from plot-by-plot GPS boundary capture and geotagged offline reports to species-level survival metrics, rated 4.84/5.00 on ISO/IEC 25010 by ten ENRO personnel.',
     ],
     links: [
       { label: 'Live Demo', href: 'https://plantscope.org' },
