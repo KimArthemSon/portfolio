@@ -18,7 +18,7 @@ export const profile: Profile = {
     'BSIT student building full-stack web and mobile applications, RESTful APIs, and GIS-based systems — from database design through to deployed interface.',
   availability: {
     short: 'Available',
-    detail: 'Available for OJT internship · December 2026 · 600 hours',
+    detail: 'Available for OJT internship · December 2026 · 600 hours · Preferably remote / work from home',
   },
   resumeUrl: '/resume.pdf',
   socials: [

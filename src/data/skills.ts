@@ -59,7 +59,7 @@ export const skills: Skill[] = [
     category: 'Languages',
     items: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Java', 'C++', 'PHP'],
   },
-  { category: 'Tools', items: ['Git', 'GitHub', 'VS Code'] },
+  { category: 'Tools', items: ['Git', 'GitHub', 'Docker', 'VS Code'] },
   { category: 'AI Tools', items: ['Claude', 'ChatGPT', 'Qwen'] },
   { category: 'Currently Learning', items: ['AWS'] },
 ];

@@ -10,7 +10,7 @@ export const servicesContent: ServicesContent = {
     roles: [
       {
         title: 'OJT / Internship',
-        detail: 'Starting December 2026 · 600 hours. Ready to learn fast and ship real work.',
+        detail: 'Starting December 2026 · 600 hours · Preferably remote / work from home. Ready to learn fast and ship real work.',
         tag: 'Priority',
         highlight: true,
       },

@@ -5,6 +5,7 @@ import {
   SiCplusplus,
   SiCss,
   SiDjango,
+  SiDocker,
   SiExpress,
   SiGit,
   SiGithub,
@@ -105,6 +106,7 @@ export const techIcons: Record<string, TechIcon> = {
   // Tools
   Git: { icon: SiGit, color: '#F05032' },
   GitHub: { icon: SiGithub },
+  Docker: { icon: SiDocker, color: '#2496ED' },
   'VS Code': { icon: VscVscode, color: '#007ACC' },
   'GIS & Geospatial Analysis': { icon: FiMap },
 

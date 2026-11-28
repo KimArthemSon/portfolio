@@ -72,7 +72,7 @@ export function Hero({ profile, projectsId }: HeroProps) {
                 strokeWidth={1.75}
               />
             </Button>
-            <Button href={profile.resumeUrl} variant="outline" download="Kim_Arthem_Son_Resume.pdf">
+            <Button href={profile.resumeUrl} variant="outline" download="Kim Arthem Son Resume.pdf">
               Download Resume
               <FiDownload
                 aria-hidden="true"

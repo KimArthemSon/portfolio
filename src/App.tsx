@@ -1,6 +1,10 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { matchProject, usePathname } from './lib/router';
-import { ProjectPage } from './pages/ProjectPage';
+
+// Only /project/:id needs this page, so keep it out of the homepage bundle.
+const ProjectPage = lazy(() =>
+  import('./pages/ProjectPage').then((m) => ({ default: m.ProjectPage })),
+);
 import { Footer } from './components/layout/Footer';
 import { GeometryBackground } from './components/layout/GeometryBackground';
 import { Nav } from './components/layout/Nav';
@@ -42,7 +46,9 @@ export default function App() {
 
       <div className="relative z-10 mx-auto max-w-[1480px] px-3 pt-3 sm:px-4 sm:pt-4 lg:pl-8 lg:pr-40 xl:px-40">
         {projectId !== null ? (
-          <ProjectPage projects={projects} id={projectId} siteName={profile.name} />
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <ProjectPage projects={projects} id={projectId} siteName={profile.name} />
+          </Suspense>
         ) : (
           <Home />
         )}
